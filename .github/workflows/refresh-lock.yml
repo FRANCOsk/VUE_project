@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - chore/modernize-vue-dashboard
-  pull_request:
-    branches:
-      - main
 
 permissions:
   contents: write
@@ -32,20 +29,30 @@ jobs:
           rm -f package-lock.json
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
 
-      - name: Validate clean installation
-        run: npm ci --no-audit --no-fund
-
-      - name: Run complete validation
-        run: npm run check
-
-      - name: Audit dependencies
-        run: npm audit --audit-level=high
-
       - name: Commit dependency lock
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add package-lock.json
-          git commit -m "build: refresh Vue dependency lock"
-          git push
+          if git diff --cached --quiet; then
+            echo "Dependency lock is already current."
+          else
+            git commit -m "build: refresh Vue dependency lock"
+            git push
+          fi
+
+      - name: Validate clean installation
+        run: npm ci --no-audit --no-fund
+
+      - name: Type check
+        run: npm run type-check
+
+      - name: Run unit tests
+        run: npm run test
+
+      - name: Build application
+        run: npm run build
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
