@@ -1,68 +1,62 @@
-# vue-project
+# Enterprise Delivery Dashboard
 
-This template should help get you started developing with Vue 3 in Vite.
+A responsive Vue and TypeScript portfolio application for tracking enterprise project health, delivery progress, milestones, team size, and technology coverage.
 
-## Recommended IDE Setup
+The repository demonstrates how a basic Vue starter can be transformed into a maintainable, production-oriented frontend with reusable components, typed sample data, automated validation, and dependency security checks.
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## Features
 
-## Type Support for `.vue` Imports in TS
+- responsive enterprise dashboard layout
+- reusable metric-card and delivery-table components
+- typed project and status models
+- computed portfolio metrics
+- search, domain, and delivery-status filters
+- accessible status badges and progress indicators
+- mobile-friendly navigation and table presentation
+- automated type checking, unit testing, production build, and npm audit
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+## Technology stack
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+- Vue 3 Composition API
+- TypeScript
+- Vue Router
+- Pinia-ready application bootstrap
+- Vite
+- Vitest and Vue Test Utils
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
+## Requirements
 
-## Customize configuration
+- Node.js 22.22.3 or newer
+- npm 10 or newer
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Local development
 
-## Project Setup
-
-```sh
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+The development server runs at `http://localhost:5173`.
 
-```sh
+## Validation
+
+```bash
+npm run type-check
+npm run test
 npm run build
+npm run audit
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+Run the complete validation suite with:
 
-```sh
-npm run test:unit
+```bash
+npm run check
 ```
 
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
+## Continuous integration
 
-```sh
-npm run test:e2e:dev
-```
+GitHub Actions performs a clean npm installation, TypeScript validation, unit tests, a production build, and a high-severity dependency audit. Dependabot checks npm and GitHub Actions dependencies weekly.
 
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
+## Data notice
 
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+All project names, metrics, and delivery values in this repository are demonstration data created for portfolio presentation. They do not represent confidential client information.
